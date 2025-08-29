@@ -1,0 +1,35 @@
+###get all
+GET http://localhost:3000/api/v1/vehiculos 
+Content-Type: application/json
+
+### get by id / valdiacion confirmada - el id debe ser numerico
+GET http://localhost:3000/api/v1/vehiculos/1 
+Content-Type: application/json
+
+### create / validacion confirmada - impide duplicado de placas
+POST http://localhost:3000/api/v1/vehiculos
+Content-Type: application/json
+
+{
+  "marca": "Honda",
+  "modelo": "Civic",
+  "color": "Azul",
+  "precio": 23000.00,
+  "placa": "XYZ-789"
+}
+
+### update / validacion confirmada - impide duplicado de placas
+PATCH http://localhost:3000/api/v1/vehiculos/4
+Content-Type: application/json
+
+{
+  "marca": "Toyota",
+  "modelo": "Corolla",
+  "color": "verde",
+  "precio": 15001.50,
+  "placa": "ABC-456"
+}
+
+### delete / validacion confirmada - el id debe ser numerico
+DELETE http://localhost:3000/api/v1/vehiculos/3
+Content-Type: application/json

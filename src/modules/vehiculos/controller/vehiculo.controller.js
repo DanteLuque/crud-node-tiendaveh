@@ -18,7 +18,7 @@ class VehiculoController extends ControllerBase {
     try {
       const { error: idError } = vehiculoIdParamSchema.validate(req.params);
       if (idError) return res.status(400).json({ message: 'Id inválido', details: idError.details.map(d => d.message) });
-      
+
       const id = parseInt(req.params.id);
 
       const vehiculo = await Vehiculo.getById(this.getDbPool(), id);
@@ -64,6 +64,9 @@ class VehiculoController extends ControllerBase {
 
   async update(req, res) {
     try {
+      const { error: idError } = vehiculoIdParamSchema.validate(req.params);
+      if (idError) return res.status(400).json({ message: 'Id inválido', details: idError.details.map(d => d.message) });
+
       const id = parseInt(req.params.id);
 
       const existingVehiculo = await Vehiculo.getById(this.getDbPool(), id);
@@ -99,6 +102,9 @@ class VehiculoController extends ControllerBase {
 
   async deleteById(req, res) {
     try {
+      const { error: idError } = vehiculoIdParamSchema.validate(req.params);
+      if (idError) return res.status(400).json({ message: 'Id inválido', details: idError.details.map(d => d.message) });
+
       const id = parseInt(req.params.id);
 
       const vehiculo = await Vehiculo.getById(this.getDbPool(), id);
