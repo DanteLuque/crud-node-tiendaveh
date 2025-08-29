@@ -3,7 +3,7 @@ GET http://localhost:3000/api/v1/vehiculos
 Content-Type: application/json
 
 ### get by id / valdiacion confirmada - el id debe ser numerico
-GET http://localhost:3000/api/v1/vehiculos/1 
+GET http://localhost:3000/api/v1/vehiculos/1
 Content-Type: application/json
 
 ### create / validacion confirmada - impide duplicado de placas

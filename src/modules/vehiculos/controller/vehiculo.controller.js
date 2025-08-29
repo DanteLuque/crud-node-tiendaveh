@@ -17,13 +17,12 @@ class VehiculoController extends ControllerBase {
   async getById(req, res) {
     try {
       const { error: idError } = vehiculoIdParamSchema.validate(req.params);
-      if (idError) return res.status(400).json({ message: 'Id inválido', details: idError.details.map(d => d.message) });
-
+      if (idError) return this.handleError(res, 400, idError, 'Id inválido', idError.details.map(d => d.message));
+      
       const id = parseInt(req.params.id);
-
       const vehiculo = await Vehiculo.getById(this.getDbPool(), id);
 
-      if (!vehiculo) return res.status(404).json({ message: "Vehiculo no encontrado" });
+      if (!vehiculo) return this.handleError(res, 404, "Vehiculo no encontrado");
       res.json(vehiculo);
     } catch (error) {
       this.handleError(res, 500, error, "Error al obtener el vehiculo");
@@ -65,7 +64,7 @@ class VehiculoController extends ControllerBase {
   async update(req, res) {
     try {
       const { error: idError } = vehiculoIdParamSchema.validate(req.params);
-      if (idError) return res.status(400).json({ message: 'Id inválido', details: idError.details.map(d => d.message) });
+      if (idError) return this.handleError(res, 400, idError, 'Id inválido', idError.details.map(d => d.message));
 
       const id = parseInt(req.params.id);
 
@@ -103,7 +102,7 @@ class VehiculoController extends ControllerBase {
   async deleteById(req, res) {
     try {
       const { error: idError } = vehiculoIdParamSchema.validate(req.params);
-      if (idError) return res.status(400).json({ message: 'Id inválido', details: idError.details.map(d => d.message) });
+      if (idError) return this.handleError(res, 400, idError, 'Id inválido', idError.details.map(d => d.message));
 
       const id = parseInt(req.params.id);
 
@@ -111,9 +110,7 @@ class VehiculoController extends ControllerBase {
       if (!vehiculo) return res.status(404).json({ message: "Vehiculo no encontrado" });
 
       const result = await Vehiculo.softDelete(this.getDbPool(), id);
-      if (result.affectedRows === 0) {
-        return res.status(400).json({ message: "No se puede eliminar el vehiculo" });
-      }
+      if (result.affectedRows === 0) return res.status(400).json({ message: "No se puede eliminar el vehiculo" });
 
       res.json({ message: "Vehiculo eliminado" });
     } catch (error) {
