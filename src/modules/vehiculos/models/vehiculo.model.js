@@ -84,13 +84,16 @@ class Vehiculo extends ModelBase {
     return result;
   }
 
-  static async exists(conexion, idExists, placa) {
+  static async exists(conexion, placa, idExists = null) {
     const [result] = await conexion.query(
-      "SELECT COUNT(*) AS count FROM vehiculos WHERE placa = ? AND ID != ? AND deleted_at IS NULL",
-      [placa, idExists]
+      idExists
+        ? "SELECT COUNT(*) AS count FROM vehiculos WHERE placa = ? AND id != ? AND deleted_at IS NULL"
+        : "SELECT COUNT(*) AS count FROM vehiculos WHERE placa = ? AND deleted_at IS NULL",
+      idExists ? [placa, idExists] : [placa]
     );
     return result[0].count > 0;
   }
+
 
 }
 
