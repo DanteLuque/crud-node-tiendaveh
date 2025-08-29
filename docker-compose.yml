@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: wsvehiculos
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - HOST=host.docker.internal
+    ports:
+      - "${PORT}:${PORT}"
+
+  ngrok:
+    image: ngrok/ngrok:latest
+    restart: always
+    command: http --domain=${NGROK_DOMAIN} app:${PORT}
+    environment:
+      - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
+    ports:
+      - "4040:4040"
+    depends_on:
+      - app
