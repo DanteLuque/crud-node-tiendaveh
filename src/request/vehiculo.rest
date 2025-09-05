@@ -1,13 +1,17 @@
-###get all
-GET http://localhost:3001/api/v1/vehiculos 
+### Para usar estas request, debe instalar la extesión de vs code: https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+@baseUrl = http://localhost:3001/api/v1
+
+### get all
+GET {{baseUrl}}/vehiculos
 Content-Type: application/json
 
-### get by id / valdiacion confirmada - el id debe ser numerico
-GET http://localhost:3001/api/v1/vehiculos/1
+### get by id / validacion confirmada - el id debe ser numerico
+GET {{baseUrl}}/vehiculos/1
 Content-Type: application/json
 
 ### create / validacion confirmada - impide duplicado de placas
-POST http://localhost:3001/api/v1/vehiculos
+POST {{baseUrl}}/vehiculos
 Content-Type: application/json
 
 {
@@ -19,7 +23,7 @@ Content-Type: application/json
 }
 
 ### update / validacion confirmada - impide duplicado de placas
-PATCH http://localhost:3001/api/v1/vehiculos/4
+PATCH {{baseUrl}}/vehiculos/4
 Content-Type: application/json
 
 {
@@ -31,5 +35,5 @@ Content-Type: application/json
 }
 
 ### delete / validacion confirmada - el id debe ser numerico
-DELETE http://localhost:3001/api/v1/vehiculos/3
+DELETE {{baseUrl}}/vehiculos/3
 Content-Type: application/json
