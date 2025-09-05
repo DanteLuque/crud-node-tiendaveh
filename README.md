@@ -102,7 +102,7 @@ wstiendaveh/
 │   │       ├── models/            # Modelo Vehiculo
 │   │       ├── routes/            # Definición de rutas
 │   │       └── validators/        # Validaciones con Joi
-│   └── request/                   # Colecciones REST (local y prod)
+│   └── request/                   # Colecciones REST
 └── docs/ngrok.md                  # Documentación extra sobre Ngrok
 
 ```

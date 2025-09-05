@@ -1,6 +1,13 @@
 ### Para usar estas request, debe instalar la extesión de vs code: https://marketplace.visualstudio.com/items?itemName=humao.rest-client
 
-@baseUrl = http://localhost:3001/api/v1
+# RENDER - DEPLOY
+# @baseUrl = https://crud-node-tiendaveh.onrender.com/api/v1
+
+# DOCKER
+# @baseUrl = https://walrus-delicate-routinely.ngrok-free.app/api/v1
+
+# LOCAL
+ @baseUrl = http://localhost:3001/api/v1
 
 ### get all
 GET {{baseUrl}}/vehiculos
