@@ -60,7 +60,7 @@ docker-compose up --build -d
 ```
 Esto ejecutará el **docker-compose.yml**, en este caso la app podrá ser expuesta a internet pero seguirá ligada a una base de datos local, accediendo con el host **host.docker.internal** el cual es un nombre de DNS especial en Docker que permite a los contenedores referirse al **localhost**
 
-### 6️⃣ Comprar la url publica
+### 6️⃣ Comprobar la url publica
 
 Una vez levantado el contenedor en docker, podemos utilizar este comando:
 ```bash
